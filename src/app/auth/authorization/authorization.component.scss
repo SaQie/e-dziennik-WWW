@@ -1,0 +1,38 @@
+* {box-sizing:border-box}
+
+.login-container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: clamp(360px, 80%, 600px);
+    height: clamp(360px, 80%, 600px);
+    min-height: 100%;
+    margin: 0 auto;
+    
+    mat-card{
+        padding: 25px;
+        width: clamp(360px, 80%, 600px)
+    }
+    mat-card-title{
+        margin-bottom: 40px;
+    }
+}
+mat-form-field {
+    width: 100%;
+}
+
+.login-actions{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    button{
+        width: 50%;
+    }
+}
+
+mat-card-footer{
+    color:red;
+}

@@ -1,0 +1,24 @@
+<div class="login-container">
+    <mat-card>
+        <form [formGroup]="authorizationForm" (ngSubmit)="login()">
+            <mat-card-title>Log in</mat-card-title>
+            <mat-card-content>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input autofocus matInput placeholder="" formControlName="username" required autocomplete="off">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                </mat-form-field>
+
+                <mat-card-footer *ngIf="error != null">{{error}}</mat-card-footer>
+                <mat-card-footer *ngIf="logoutMessage != null && error == null" color="green">{{logoutMessage}}</mat-card-footer>
+            </mat-card-content>
+            <mat-card-actions class="login-actions">
+                <button mat-raised-button color="primary">Log in</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
