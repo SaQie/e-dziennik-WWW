@@ -15,11 +15,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AdminComponent } from './modules/admin/admin/admin.component';
 import { AdminHeaderComponent } from './modules/admin/admin-header/admin-header.component';
+import { AuthGuard } from './auth/authorization/guard/auth.guard';
+import { AuthInterceptor } from './auth/authorization/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,14 @@ import { AdminHeaderComponent } from './modules/admin/admin-header/admin-header.
     })
 
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
