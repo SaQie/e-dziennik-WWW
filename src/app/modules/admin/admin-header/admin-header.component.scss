@@ -2,13 +2,42 @@
     flex: 1 1 auto;
 }
 
-.dialog-actions{
-    button{
+.dialog-actions {
+    button {
         flex: 1 auto;
     }
 }
 
-.dialog-container{
+.dialog-container {
     padding: 10px 10px 10px 10px;
     text-align: center;
+}
+
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: 100%;
+    margin: 0;
+}
+
+.app-sidenav {
+    width: clamp(150px, 230px, 250px);
+}
+
+.app-sidenav-content {
+    width: clamp(360px, 100%, 2160px);
+    height: clamp(360px, 80%, 2440px);
+    margin: 0 auto;
+}
+
+.list-item {
+    width: clamp(130px, 200px, 220px);
+}
+
+.app-container {
+    span {
+        font-size: 15px;
+    }
 }

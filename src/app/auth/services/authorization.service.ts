@@ -13,7 +13,7 @@ export class AuthorizationService {
   }
 
   login(authData: AuthData) {
-    return this.http.post(`${environment.apiAddress}/login`, authData);
+    return this.http.post(`${environment.loginAddress}/login`, authData);
   }
 
   setRole(role: string[]) {

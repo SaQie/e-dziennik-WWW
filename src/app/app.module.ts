@@ -22,6 +22,14 @@ import { AdminComponent } from './modules/admin/admin/admin.component';
 import { AdminHeaderComponent } from './modules/admin/admin-header/admin-header.component';
 import { AuthGuard } from './auth/authorization/guard/auth.guard';
 import { AuthInterceptor } from './auth/authorization/auth.interceptor';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { SchoolManagementComponent } from './modules/admin/school/school-management/school-management.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +37,8 @@ import { AuthInterceptor } from './auth/authorization/auth.interceptor';
     AuthorizationComponent,
     ForbiddenComponent,
     AdminComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    SchoolManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,14 @@ import { AuthInterceptor } from './auth/authorization/auth.interceptor';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
+    MatSidenavModule,
     MatToolbarModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatTableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
