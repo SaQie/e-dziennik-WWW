@@ -13,7 +13,14 @@ export class AuthorizationService {
   }
 
   login(authData: AuthData) {
-    return this.http.post(`${environment.loginAddress}/login`, authData);
+    const headers = new HttpHeaders().set("No-Auth","True");
+    return this.http.post(`${environment.loginAddress}/login`, authData, {
+      headers: headers
+    });
+  }
+
+  refreshToken(refreshToken: string){
+    return this.http.post(`${environment.loginAddress}/jwt/refreshtoken`, refreshToken);
   }
 
   setRole(role: string[]) {

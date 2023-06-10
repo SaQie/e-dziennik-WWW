@@ -1,24 +1,36 @@
-<div *ngIf="!isDataLoaded">
+<div *ngIf="!isDataLoaded" class="loader">
     <mat-spinner></mat-spinner>
-    <br>
-    <b>Loading data...</b>
 </div>
 
-<div class="header-options">
+<school-management-options></school-management-options>
 
-</div>
 
 <div class="table-content" *ngIf="isDataLoaded">
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="tableContent">
+
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="handleSelectAll($event)"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            >
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="handleSelect($event, row)"
+                            [checked]="selection.isSelected(row)"
+                            >
+              </mat-checkbox>
+            </td>
+          </ng-container>
       
-          <!-- Position Column -->
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef>Index </th>
             <td mat-cell *matCellDef="let element; let i = index;"> {{i + 1}} </td>
           </ng-container>
-      
-          <!-- Name Column -->
+          
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>

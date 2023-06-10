@@ -1,14 +1,15 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Observable, catchError, throwError } from "rxjs";
+import { Observable, catchError, switchMap, tap, throwError } from "rxjs";
 import { AuthorizationService } from "../services/authorization.service";
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
 
-    constructor(private authService: AuthorizationService, private router: Router) {
+    constructor(private authService: AuthorizationService, private router: Router, private jwtDecoder: JwtHelperService) {
 
     }
 
@@ -19,6 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }
 
         const token = this.authService.getToken();
+        const isTokenExpired = this.jwtDecoder.isTokenExpired(token);
         req = this.addToken(req, token!);
 
         return next.handle(req).pipe(
@@ -31,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     if (error.status === 403) {
                         this.router.navigate(['/forbidden']);
                     }
-                    return throwError(() => "something went wrong");
+                    return throwError(() => "something went wrong while authenticating with a token");
                 }
             )
         )

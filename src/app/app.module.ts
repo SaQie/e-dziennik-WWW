@@ -25,11 +25,13 @@ import { AuthInterceptor } from './auth/authorization/auth.interceptor';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SchoolManagementComponent } from './modules/admin/school/school-management/school-management.component';
+import { SchoolManagementOptionsComponent } from './modules/admin/school/school-management/options/school-management-options/school-management-options.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { SchoolManagementComponent } from './modules/admin/school/school-managem
     AdminComponent,
     AdminHeaderComponent,
     SchoolManagementComponent,
+    SchoolManagementOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { SchoolManagementComponent } from './modules/admin/school/school-managem
     MatListModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    MatCheckboxModule,
     MatTableModule,
     JwtModule.forRoot({
       config: {

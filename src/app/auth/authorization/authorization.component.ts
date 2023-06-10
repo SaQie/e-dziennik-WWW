@@ -47,6 +47,7 @@ export class AuthorizationComponent {
 
       },
       error: (error: any) => {
+        console.log(error);
         this.error = error.error.message;
       }
     });
