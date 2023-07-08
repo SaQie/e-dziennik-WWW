@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,11 +27,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SchoolManagementComponent } from './modules/admin/school/school-management/school-management.component';
 import { SchoolManagementOptionsComponent } from './modules/admin/school/school-management/options/school-management-options/school-management-options.component';
+import { DeleteSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/delete-school/delete-school/delete-school.component';
+import { ErrorDialogComponent } from './common/error/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,12 @@ import { SchoolManagementOptionsComponent } from './modules/admin/school/school-
     AdminComponent,
     AdminHeaderComponent,
     SchoolManagementComponent,
-    SchoolManagementOptionsComponent
+    SchoolManagementOptionsComponent,
+    DeleteSchoolComponent,
+    ErrorDialogComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

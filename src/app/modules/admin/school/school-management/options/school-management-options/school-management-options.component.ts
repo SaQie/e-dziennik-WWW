@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { SchoolManagementSelectionService } from '../../school-management-selection.service';
+import { SchoolManagementService } from '../../school-management.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteSchoolComponent } from './delete-school/delete-school/delete-school.component';
 
 @Component({
   selector: 'school-management-options',
@@ -8,28 +11,32 @@ import { SchoolManagementSelectionService } from '../../school-management-select
 })
 export class SchoolManagementOptionsComponent {
 
-  constructor(private schoolManagementSelectionService:SchoolManagementSelectionService){
+  constructor(
+    private schoolManagementSelectionService: SchoolManagementSelectionService,
+    private schoolManagementService: SchoolManagementService,
+    private dialog: MatDialog) {
 
   }
 
-  onAddButtonClick(){
-    const identifiers = this.schoolManagementSelectionService.getItems();
-    console.log(identifiers);
+  onAddButtonClick() {
+
+
   }
 
-  onEditButtonClick(){
-    const identifiers = this.schoolManagementSelectionService.getItems();
-    console.log(identifiers);
+  onEditButtonClick() {
+
+    
   }
 
-  onShowButtonClick(){
-    const identifiers = this.schoolManagementSelectionService.getItems();
-    console.log(identifiers);
+  onShowButtonClick() {
+    
   }
 
-  onRemoveButtonClick(){
-    const identifiers = this.schoolManagementSelectionService.getItems();
-    console.log(identifiers);
+  onRemoveButtonClick() {
+    const selectedItem = this.schoolManagementSelectionService.getSelectedItem();
+    if (selectedItem){
+      this.dialog.open(DeleteSchoolComponent, { data: selectedItem });
+    }
   }
 
 }

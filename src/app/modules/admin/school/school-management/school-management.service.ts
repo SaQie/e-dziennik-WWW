@@ -15,4 +15,8 @@ export class SchoolManagementService {
     return this.httpClient.get<Page<SchoolSummary[]>>(`${environment.apiAddress}/schools?page=${pageIndex}&size=${pageSize}`);
   }
 
+  deleteSchool(uuid:String){
+    return this.httpClient.delete(`${environment.apiAddress}/schools/${uuid}`);
+  }
+
 }

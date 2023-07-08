@@ -1,0 +1,10 @@
+<div mat-dialog-title> Error occured </div>
+<div mat-dialog-content>
+    <div>
+        <mat-label>{{dialogData.message}}</mat-label>
+        <mat-label>{{dialogData.error}}</mat-label>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button type="button" (click)="onOkButtonClick()" color="primary">Ok</button>
+</div>

@@ -23,6 +23,8 @@ export class SchoolManagementComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['select', 'position', 'name', 'identifier'];
   selection = new SelectionModel<SchoolSummary>(true, []);
 
+  refreshTrigger: boolean = false;
+
   length!: number;
   pageSizeOptions = [25, 50, 100];
   actualPageSize!: number;
@@ -30,12 +32,22 @@ export class SchoolManagementComponent implements OnInit, AfterViewInit {
 
 
 
-  constructor(private schoolManagementSerice: SchoolManagementService, private schoolManagementSelectionService: SchoolManagementSelectionService) {
+  constructor(
+    private schoolManagementSerice: SchoolManagementService,
+    private schoolManagementSelectionService: SchoolManagementSelectionService) {
 
   }
 
   ngAfterViewInit() {
     this.fetchTableData(0, 25);
+    // Refresh view trigger
+    this.schoolManagementSelectionService.getRefreshTrigger$().subscribe((refresh) => {
+      if (refresh) {
+        console.log("Poszedl trigger");
+        this.fetchTableData(this.actualPage, this.actualPageSize);
+        this.refreshTrigger = false;
+      } 
+    })
   }
 
   onPageChange(event: PageEvent) {
@@ -43,7 +55,7 @@ export class SchoolManagementComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
+    
   }
 
   isAllSelected() {
@@ -63,25 +75,18 @@ export class SchoolManagementComponent implements OnInit, AfterViewInit {
 
   handleSelect(event: MatCheckboxChange, row: SchoolSummary) {
     if (event.checked) {
+      this.selection.clear();
       this.selection.toggle(row);
-      this.schoolManagementSelectionService.addItem(row);
-    }else{
+      this.schoolManagementSelectionService.selectItem(row);
+    } else {
+      this.selection.clear();
       this.selection.toggle(row);
-      this.schoolManagementSelectionService.removeItem(row);
-    }
-  }
-
-  handleSelectAll(event: MatCheckboxChange) {
-    if (event.checked) {
-      this.toggleAllRows();
-      this.schoolManagementSelectionService.addItems(this.selection.selected)
-    }else{
-      this.toggleAllRows();
-      this.schoolManagementSelectionService.clearItems();
+      this.schoolManagementSelectionService.clearSelection();
     }
   }
 
   private fetchTableData(pageIndex: number, pageSize: number) {
+    console.log("Laduje dane")
     this.isDataLoaded = false;
     this.schoolManagementSerice.getSchoolSummary(pageIndex, pageSize).subscribe({
       next: (response: Page<SchoolSummary[]>) => {

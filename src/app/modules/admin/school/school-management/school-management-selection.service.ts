@@ -1,41 +1,40 @@
 import { Injectable } from '@angular/core';
 import { SchoolSummary } from './model/SchoolSummary';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolManagementSelectionService {
 
-  private selectedItems: SchoolSummary[] = [];
+  private selectedItem!: SchoolSummary | null;
+
+  private refreshTrigger$ = new Subject<boolean>;
 
 
   constructor() {
 
   }
 
-  addItem(item: SchoolSummary) {
-    this.selectedItems.push(item);
+  selectItem(item: SchoolSummary) {
+    this.selectedItem = item;
   }
 
-  addItems(identifiers: SchoolSummary[]) {
-    this.selectedItems.push(...identifiers);
+  getSelectedItem(): SchoolSummary | null {
+    return this.selectedItem;
   }
 
-  getItems(): SchoolSummary[] {
-    return this.selectedItems;
+  clearSelection(){
+    this.selectedItem = null;
   }
 
-  clearItems(){
-    this.selectedItems = [];
+  refreshView() {
+    this.refreshTrigger$.next(true);
   }
 
-  removeItem(item: SchoolSummary){
-    const index = this.selectedItems.indexOf(item);
-    if (index !== -1) {
-      this.selectedItems.splice(index, 1);
-    }
+  getRefreshTrigger$(): Observable<boolean> {
+    return this.refreshTrigger$.asObservable();
   }
-
 
 
 }

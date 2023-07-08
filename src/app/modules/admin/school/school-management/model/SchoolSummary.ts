@@ -1,5 +1,5 @@
 export interface SchoolSummary {
-    uuid: string;
+    schoolId: string;
     name: string;
     schoolLevelId: string;
     schoolLevelName: string;
