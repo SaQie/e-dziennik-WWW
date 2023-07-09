@@ -1,10 +1,11 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SchoolSummary } from '../../../../model/SchoolSummary';
 import { SchoolManagementService } from '../../../../school-management.service';
 import { SchoolManagementSelectionService } from '../../../../school-management-selection.service';
-import { Dialog, DialogRef } from '@angular/cdk/dialog';
 import { ErrorDialogComponent } from 'src/app/common/error/error-dialog/error-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SuccessOperationComponent } from 'src/app/common/success/success-operation/success-operation.component';
 
 
 @Component({
@@ -14,7 +15,6 @@ import { ErrorDialogComponent } from 'src/app/common/error/error-dialog/error-di
 })
 export class DeleteSchoolComponent {
 
-
   readonly selectedItem: SchoolSummary;
   deletingInProgress = false;
 
@@ -22,9 +22,9 @@ export class DeleteSchoolComponent {
     private schoolManagementService: SchoolManagementService,
     private schoolManagementSelectionService: SchoolManagementSelectionService,
     @Inject(MAT_DIALOG_DATA) private dialogData: SchoolSummary,
-    private dialogRef: DialogRef,
-    private errorDialog: Dialog) {
-
+    private dialogRef: MatDialogRef<DeleteSchoolComponent>,
+    private errorDialog: MatDialog,
+    private snackBar: MatSnackBar) {
     this.selectedItem = this.dialogData;
   }
 
@@ -38,10 +38,13 @@ export class DeleteSchoolComponent {
         this.schoolManagementSelectionService.clearSelection();
         this.schoolManagementSelectionService.refreshView();
         this.dialogRef.close();
+        this.snackBar.openFromComponent(SuccessOperationComponent, {
+          duration: 5000
+        });
       },
       error: (error: any) => {
         console.log(error);
-        this.dialogRef.close();
+        this.dialogRef.close(true);
         this.errorDialog.open(ErrorDialogComponent, {
           data: {
             message: 'An error occured during delete schools.',

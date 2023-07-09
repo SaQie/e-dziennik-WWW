@@ -1,10 +1,11 @@
-<div mat-dialog-title> Error occured </div>
-<div mat-dialog-content>
-    <div>
-        <mat-label>{{dialogData.message}}</mat-label>
-        <mat-label>{{dialogData.error}}</mat-label>
-    </div>
+<div mat-dialog-title class="title">Error occurred</div>
+<div mat-dialog-content class="content">
+  <ul>
+    <li *ngFor="let error of errorData">
+      <mat-label>{{ error.message }}</mat-label>
+    </li>
+  </ul>
 </div>
-<div mat-dialog-actions>
-    <button mat-button type="button" (click)="onOkButtonClick()" color="primary">Ok</button>
+<div mat-dialog-actions class="action">
+  <button mat-raised-button type="button" [mat-dialog-close]="true" color="primary">OK</button>
 </div>

@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     if (error.status === 403) {
                         this.router.navigate(['/forbidden']);
                     }
-                    return throwError(() => "something went wrong while authenticating with a token");
+                    return throwError(() => error.error);
                 }
             )
         )

@@ -1,5 +1,5 @@
 <div mat-dialog-title> Are you sure to delete selected school ? </div>
-<div mat-dialog-content>
+<div mat-dialog-content class="content">
     <div *ngIf="deletingInProgress">
         <mat-spinner></mat-spinner>
         <br>
@@ -9,7 +9,7 @@
         <mat-label>{{selectedItem.name}}</mat-label>
     </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="action">
     <button mat-button type="button" [mat-dialog-close]="false" color="warn">No</button>
     <button mat-raised-button color="primary" (click)="onConfirmButton()" type="submit">Yes</button>
 </div>

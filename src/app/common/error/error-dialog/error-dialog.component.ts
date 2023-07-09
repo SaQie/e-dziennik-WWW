@@ -1,33 +1,29 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, NgZone } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { HttpError } from '../HttpError';
 
 @Component({
   selector: 'app-error-dialog',
   templateUrl: './error-dialog.component.html',
-  styleUrls: ['./error-dialog.component.scss'],
-  providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
-  ],
+  styleUrls: ['./error-dialog.component.scss']
 })
 export class ErrorDialogComponent {
 
-  dialogData: any;
+  errorData: HttpError[];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: DialogRef) {
-      console.log(data);
-    this.dialogData = this.data;
-  }
-
-  onOkButtonClick(){
-    console.log(this.dialogData);
-    this.dialogRef.close();
+    @Inject(MAT_DIALOG_DATA) private data: any) {
+    this.errorData = this.mapToErrorData(this.data);
   }
 
 
-
+  private mapToErrorData(data:any) : HttpError[]{
+    return data.error.map((item:any) => ({
+      field: item.field,
+      errorCode: item.errorCode,
+      message: item.message
+    }));
+  }
 
 }
