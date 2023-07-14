@@ -3,6 +3,8 @@ import { SchoolManagementSelectionService } from '../../school-management-select
 import { SchoolManagementService } from '../../school-management.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteSchoolComponent } from './delete-school/delete-school/delete-school.component';
+import { CreateSchoolComponent } from './create-school/create-school/create-school.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'school-management-options',
@@ -14,12 +16,13 @@ export class SchoolManagementOptionsComponent {
   constructor(
     private schoolManagementSelectionService: SchoolManagementSelectionService,
     private schoolManagementService: SchoolManagementService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private router: Router) {
 
   }
 
   onAddButtonClick() {
-
+    this.router.navigateByUrl('/admin/school-management/create-school');
 
   }
 

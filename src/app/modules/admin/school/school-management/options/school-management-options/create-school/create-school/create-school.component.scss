@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+mat-form-field {
+    margin-bottom: 15px;
+    width: clamp(360px, 80%, 450px);
+}
+
+
+.banner {
+    display: flex;
+    justify-content: center;
+}
+
+.banner-text {
+    font-size: 20px;
+    padding: 35px;
+    border-bottom: 2px black solid;
+    border-color: black;
+}
+
+.actions {
+    display: flex;
+    width: clamp(360px, 80%, 450px);
+  }
+  
+  .actions button {
+    flex: 1;
+    margin: 5px;
+  }
+  

@@ -36,6 +36,9 @@ import { DeleteSchoolComponent } from './modules/admin/school/school-management/
 import { ErrorDialogComponent } from './common/error/error-dialog/error-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SuccessOperationComponent } from './common/success/success-operation/success-operation.component';
+import { CreateSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/create-school/create-school/create-school.component';
+import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,9 +51,12 @@ import { SuccessOperationComponent } from './common/success/success-operation/su
     SchoolManagementOptionsComponent,
     DeleteSchoolComponent,
     ErrorDialogComponent,
-    SuccessOperationComponent
+    SuccessOperationComponent,
+    CreateSchoolComponent,
+    SchoolManagementTableComponent
   ],
   imports: [
+    MatSelectModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,

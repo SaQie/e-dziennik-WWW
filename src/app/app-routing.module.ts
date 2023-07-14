@@ -5,6 +5,8 @@ import { AuthorizationComponent } from './auth/authorization/authorization.compo
 import { AuthGuard } from './auth/authorization/guard/auth.guard';
 import { ForbiddenComponent } from './auth/forbidden/forbidden.component';
 import { SchoolManagementComponent } from './modules/admin/school/school-management/school-management.component';
+import { CreateSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/create-school/create-school/create-school.component';
+import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
 
 const routes: Routes = [
   {
@@ -13,7 +15,15 @@ const routes: Routes = [
     data: { expectedRole: 'ROLE_ADMIN', },
     children: [
       {
-        path: 'school-management', component: SchoolManagementComponent
+        path: 'school-management', component: SchoolManagementComponent,
+        children: [
+          {
+            path: '', component: SchoolManagementTableComponent
+          },
+          {
+            path: 'create-school', component: CreateSchoolComponent,
+          }
+        ]
       }
     ]
   },
