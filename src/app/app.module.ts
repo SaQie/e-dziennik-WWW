@@ -39,6 +39,7 @@ import { SuccessOperationComponent } from './common/success/success-operation/su
 import { CreateSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/create-school/create-school/create-school.component';
 import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ShowSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/show-school/show-school/show-school.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     ErrorDialogComponent,
     SuccessOperationComponent,
     CreateSchoolComponent,
-    SchoolManagementTableComponent
+    SchoolManagementTableComponent,
+    ShowSchoolComponent
   ],
   imports: [
     MatSelectModule,

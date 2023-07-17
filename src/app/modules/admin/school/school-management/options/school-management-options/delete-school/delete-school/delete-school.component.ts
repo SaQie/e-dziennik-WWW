@@ -47,7 +47,7 @@ export class DeleteSchoolComponent {
         this.dialogRef.close(true);
         this.errorDialog.open(ErrorDialogComponent, {
           data: {
-            message: 'An error occured during delete schools.',
+            message: 'An error occurred during delete schools.',
             error: error
           }
         });

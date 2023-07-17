@@ -7,6 +7,7 @@ import { ForbiddenComponent } from './auth/forbidden/forbidden.component';
 import { SchoolManagementComponent } from './modules/admin/school/school-management/school-management.component';
 import { CreateSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/create-school/create-school/create-school.component';
 import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
+import { ShowSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/show-school/show-school/show-school.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
           },
           {
             path: 'create-school', component: CreateSchoolComponent,
+          },
+          {
+            path: 'show-school', component: ShowSchoolComponent,
           }
         ]
       }

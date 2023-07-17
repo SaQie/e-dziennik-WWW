@@ -1,0 +1,42 @@
+<div class="container" *ngIf="!isDataLoading">
+    <div class="banner">
+        <h4 class="banner-text">
+            School details
+        </h4>
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.name}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.address}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Postal-Code</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.postalCode}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.city}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Nip</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.nip}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Regon</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.regon}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Phone number</mat-label>
+        <input matInput readonly="true" value="{{schoolDetails.phoneNumber}}">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <input matInput readonly="true" value="{{schoolDetails.schoolLevelName}}">
+    </mat-form-field>
+    <div class="actions">
+        <button mat-raised-button color="warn" (click)="onBackButton()">Back</button>
+    </div>
+</div>

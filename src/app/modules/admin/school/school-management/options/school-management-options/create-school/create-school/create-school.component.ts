@@ -71,7 +71,7 @@ export class CreateSchoolComponent implements AfterViewInit {
         error: (error: any) => {
           this.errorDialog.open(ErrorDialogComponent, {
             data: {
-              message: 'An error occured during create school.',
+              message: 'An error occurred during create school.',
               error: error
             }
           });

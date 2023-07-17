@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { SchoolSummary } from './model/SchoolSummary';
 import { SchoolLevel } from './model/SchoolLevel';
 import { CreateSchoolRequest } from './model/CreateSchoolRequest';
+import { SchoolDetails } from './model/SchoolDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class SchoolManagementService {
 
   createSchool(request: CreateSchoolRequest) {
     return this.httpClient.post(`${environment.apiAddress}/schools/`, request)
+  }
+
+  getSchool(uuid: String){
+    return this.httpClient.get<SchoolDetails>(`${environment.apiAddress}/schools/${uuid}`);
   }
 
 }

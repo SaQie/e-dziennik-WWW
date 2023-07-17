@@ -32,7 +32,10 @@ export class SchoolManagementOptionsComponent {
   }
 
   onShowButtonClick() {
-    
+    const selectedItem = this.schoolManagementSelectionService.getSelectedItem();
+    if (selectedItem){
+      this.router.navigateByUrl(`/admin/school-management/show-school?id=${selectedItem.schoolId}`);
+    }
   }
 
   onRemoveButtonClick() {
