@@ -40,8 +40,14 @@ import { CreateSchoolComponent } from './modules/admin/school/school-management/
 import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ShowSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/show-school/show-school/show-school.component';
+import { SchoolClassManagementComponent } from './modules/admin/admin/school-class/school-class-management/school-class-management.component';
+import { SchoolClassManagementOptionsComponent } from './modules/admin/admin/school-class/school-class-management/options/school-class-management-options/school-class-management-options.component';
+import { SchoolClassManagementTableComponent } from './modules/admin/admin/school-class/school-class-management/table/school-class-management-table/school-class-management-table.component';
+import { ChatComponent } from './modules/chat/chat/chat.component';
+import { FormsModule } from '@angular/forms';
+import { ChattingComponent } from './modules/chat/chatting/chatting.component';
 
-@NgModule({
+@NgModule({ 
   declarations: [
     AppComponent,
     AuthorizationComponent,
@@ -55,9 +61,15 @@ import { ShowSchoolComponent } from './modules/admin/school/school-management/op
     SuccessOperationComponent,
     CreateSchoolComponent,
     SchoolManagementTableComponent,
-    ShowSchoolComponent
+    ShowSchoolComponent,
+    SchoolClassManagementComponent,
+    SchoolClassManagementOptionsComponent,
+    SchoolClassManagementTableComponent,
+    ChatComponent,
+    ChattingComponent
   ],
   imports: [
+    FormsModule,
     MatSelectModule,
     CommonModule,
     BrowserModule,

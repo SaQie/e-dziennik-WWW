@@ -19,6 +19,10 @@ export class AuthorizationService {
     });
   }
 
+  logout(){
+    return this.http.get(`${environment.loginAddress}/logout`);
+  }
+
   refreshToken(refreshToken: string){
     return this.http.post(`${environment.loginAddress}/jwt/refreshtoken`, refreshToken);
   }
@@ -63,10 +67,19 @@ export class AuthorizationService {
     return sessionStorage.getItem("refreshToken");
   }
 
+  setUsername(token:string){
+    window.sessionStorage.setItem("username", token);
+  }
+
+  getUsername(){
+    return sessionStorage.getItem("username");
+  }
+
   setUserData(decodedToken:any){
     this.setId(decodedToken.id);
     this.setSuperId(decodedToken.superId);
     this.setRole(decodedToken.roles);
+    this.setUsername(decodedToken.sub);
   }
 
 

@@ -1,0 +1,10 @@
+.options-container{
+    width: clamp(360px, 100%, 2160px);
+    overflow: scroll;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+}
+
+.action{
+    margin: 10px;
+}

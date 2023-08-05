@@ -1,0 +1,20 @@
+
+<h3>Zalogowani uzytkownicy:</h3>
+<b>Jestes zalogowany jako: {{loggedAs}}</b>
+
+<br>
+<div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let loggedUser of loggedUsers">
+            <strong>Uzytkownik: {{loggedUser.username}}</strong>
+            <br>
+            <span>Rola: {{loggedUser.roleName}}</span>
+            <br>
+            <span>Imie i nazwisko: {{loggedUser.fullName}}</span>
+            <br>
+            <span>Identyfikator chatu: {{loggedUser.userId}}</span>
+            <br>
+            <button (click)="enterChat(loggedUser.userId, loggedUser.username)">Wejdź do chatu</button>
+        </li>
+    </ul>
+</div>

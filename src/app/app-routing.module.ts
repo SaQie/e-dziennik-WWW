@@ -8,6 +8,10 @@ import { SchoolManagementComponent } from './modules/admin/school/school-managem
 import { CreateSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/create-school/create-school/create-school.component';
 import { SchoolManagementTableComponent } from './modules/admin/school/school-management/table/school-management-table/school-management-table.component';
 import { ShowSchoolComponent } from './modules/admin/school/school-management/options/school-management-options/show-school/show-school/show-school.component';
+import { SchoolClassManagementComponent } from './modules/admin/admin/school-class/school-class-management/school-class-management.component';
+import { SchoolClassManagementTableComponent } from './modules/admin/admin/school-class/school-class-management/table/school-class-management-table/school-class-management-table.component';
+import { ChatComponent } from './modules/chat/chat/chat.component';
+import { ChattingComponent } from './modules/chat/chatting/chatting.component';
 
 const routes: Routes = [
   {
@@ -28,8 +32,24 @@ const routes: Routes = [
             path: 'show-school', component: ShowSchoolComponent,
           }
         ]
+      },
+      {
+        path: 'school-class-management', component: SchoolClassManagementComponent,
+        children: [
+          {
+            path: '', component: SchoolClassManagementTableComponent
+          }
+        ]
       }
     ]
+  },
+  {
+    path: 'chat', component: ChatComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'chatting', component: ChattingComponent,
+    canActivate: [AuthGuard]
   },
   { path: '', component: AuthorizationComponent },
   { path: 'forbidden', component: ForbiddenComponent }

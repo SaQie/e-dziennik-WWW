@@ -18,6 +18,7 @@ export class AuthGuard {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.getToken() !== null) {
       const expectedRole = route.data['expectedRole'];
+      console.log(expectedRole);
       const token = sessionStorage.getItem('token');
       if (token === null) {
         this.router.navigate(['']);
@@ -26,6 +27,9 @@ export class AuthGuard {
       const decodedToken = this.jwtService.decodeToken(token);
       const role = decodedToken.roles[0];
       if (expectedRole === role) {
+        return true;
+      }
+      if (expectedRole === undefined){
         return true;
       }
     }

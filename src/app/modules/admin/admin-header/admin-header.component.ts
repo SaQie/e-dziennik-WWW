@@ -37,14 +37,21 @@ export class LogoutConfirmationDialog {
   }
 
   onLogoutButton() {
-    this.dialogRef.close();
-    this.authService.clear();
-    const navigationExtras: NavigationExtras = {
-      state: {
-        logoutMessage: 'Successfully log out'
+    this.authService.logout().subscribe({
+      next: () => {
+        this.dialogRef.close();
+        this.authService.clear();
+        const navigationExtras: NavigationExtras = {
+          state: {
+            logoutMessage: 'Successfully log out'
+          }
+        };
+        this.router.navigate([''], navigationExtras);
+      },
+      error: (error:any) => {
+        console.log(error);
       }
-    };
-    this.router.navigate([''], navigationExtras);
+    })
   }
 
 }
