@@ -2,25 +2,31 @@
     <div class="container">
         <div class="chat-content">
             <div class="card">
-                <ul class="list-group list-group-flush">
-                    <b>Jestes zalogowany jako {{senderName}} piszesz z {{receipientName}}</b>
-                    <li class="list-group-item" *ngFor="let chatMessage of chatMessages">
-                        <strong>{{chatMessage.senderName}}: </strong>
-                        <span>{{chatMessage.chatContent}}</span>
+                <div class="header">
+                    <b>You write with {{ receipientName }}</b>
+                </div>
+                <ul class="chat-messages" #chatMessagesContainer>
+                    <li *ngIf="isLoadingMessages" class="loader">
+                        <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+                    </li>
+                    <li class="chat-message" *ngFor="let chatMessage of chatMessages"
+                        [ngClass]="{'own-message': chatMessage.senderName === senderName}">
+                        <div class="message-sender">{{ chatMessage.senderName }}:</div>
+                        <div class="message-content">{{ chatMessage.chatContent }}</div>
                     </li>
                 </ul>
             </div>
         </div>
-        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
-            <div class="chat-send row">
-                <div class="col-8">
-                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
+        <form (ngSubmit)="sendMessage()" [formGroup]="messageForm" class="chat-send">
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Message</mat-label>
+                    <input matInput type="text" class="form-control" name="message" id="input-message"
+                        formControlName="message">
+                </mat-form-field>
+                <button type="submit" mat-raised-button><mat-icon>send</mat-icon></button>
             </div>
         </form>
+        <button routerLink="/online-users" class="back-button">Back</button>
     </div>
-
 </main>

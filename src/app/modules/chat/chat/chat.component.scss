@@ -1,0 +1,92 @@
+.header{
+    text-align: center;
+}
+.chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #f4f4f4;
+}
+
+/* Styl dla kontenera */
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Styl dla dymków z wiadomościami */
+.chat-messages {
+  max-height: calc(100vh - 250px); /* Maksymalna wysokość obszaru wiadomości, zostawia miejsce na formularz */
+  overflow-y: auto; /* Wyświetlaj pasek przewijania, gdy wiadomości przekraczają maksymalną wysokość */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+.message-sender {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Styl dla wiadomości wysłanych przez Ciebie */
+.chat-message.own-message {
+  margin-left: auto;
+  border: 1px solid black;
+}
+
+/* Styl dla formularza do wysyłania wiadomości */
+.chat-send {
+  margin-top: 20px;
+}
+
+/* Styl dla przycisku "Powrót" */
+.back-button {
+  margin-top: 20px;
+  background-color: #fbc02d; /* Żółty kolor tła przycisku "Powrót" */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #f9a825; /* Jaśniejszy odcień żółtego przy najechaniu myszą */
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+
+    mat-form-field {
+        width: 100%;
+        height: auto;
+    }
+
+    mat-raised-button {
+        height: auto;
+    }
+
+    button{
+        height: 55px;
+    }
+}
+
+.loader{
+  padding: 15px;
+}

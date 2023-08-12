@@ -1,0 +1,34 @@
+body{
+    background-color: #f4f4f4;
+}
+
+.user-list {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.logged-as {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

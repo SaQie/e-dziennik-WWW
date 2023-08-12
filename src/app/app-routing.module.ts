@@ -48,7 +48,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'chatting', component: ChattingComponent,
+    path: 'online-users', component: ChattingComponent,
     canActivate: [AuthGuard]
   },
   { path: '', component: AuthorizationComponent },

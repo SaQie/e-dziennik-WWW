@@ -46,11 +46,21 @@
                     </a>
                 </mat-nav-list>
             </mat-expansion-panel>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Chat
+                </mat-expansion-panel-header>
+                <mat-nav-list class="list-item">
+                    <a mat-list-item routerLink="/online-users">
+                        <span>Online users</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-            <div class="app-sidenav-content">
-                <router-outlet></router-outlet>
-            </div>
+        <div class="app-sidenav-content">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -46,6 +46,7 @@ import { SchoolClassManagementTableComponent } from './modules/admin/admin/schoo
 import { ChatComponent } from './modules/chat/chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { ChattingComponent } from './modules/chat/chatting/chatting.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({ 
   declarations: [
@@ -69,6 +70,7 @@ import { ChattingComponent } from './modules/chat/chatting/chatting.component';
     ChattingComponent
   ],
   imports: [
+    MatProgressBarModule,
     FormsModule,
     MatSelectModule,
     CommonModule,
