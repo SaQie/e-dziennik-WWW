@@ -1,0 +1,30 @@
+<div class="chat-container">
+    <h2>Groovy script executor</h2>
+    <form (ngSubmit)="runScript()" [formGroup]="scriptContentForm" class="script-form">
+        <mat-form-field>
+            <textarea matInput #scriptTextArea (keydown)="handleKeydown($event)" rows="20" cols="10" type="text"
+                class="form-control" name="message" id="input-message" formControlName="scriptContent"></textarea>
+        </mat-form-field>
+        <div class="row">
+            <button *ngIf="!executingScript" type="submit" class="execute-button">Execute</button>
+        </div>
+        <div class="row">
+            <button *ngIf="!executingScript" routerLink="/admin" mat-raised-button color="accent" class="execute-button">Return</button>
+        </div>
+    </form>
+
+
+
+    <div *ngIf="executingScript" class="loader">
+        <mat-spinner></mat-spinner>
+    </div>
+
+
+    <div class="result-box" *ngIf="scriptResult">
+        <div class="result-heading">Execution Result</div>
+        <div class="result-item"><b>Result:</b> {{ scriptResult.scriptResult }}</div>
+        <div class="result-item"><b>Exec time:</b> {{ scriptResult.execTime }} ms</div>
+        <div class="result-item"><b>Status:</b> {{ scriptResult.status }}</div>
+    </div>
+
+</div>

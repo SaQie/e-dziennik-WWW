@@ -47,6 +47,7 @@ import { ChatComponent } from './modules/chat/chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { ChattingComponent } from './modules/chat/chatting/chatting.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ScriptComponent } from './modules/script/script.component';
 
 @NgModule({ 
   declarations: [
@@ -67,7 +68,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     SchoolClassManagementOptionsComponent,
     SchoolClassManagementTableComponent,
     ChatComponent,
-    ChattingComponent
+    ChattingComponent,
+    ScriptComponent
   ],
   imports: [
     MatProgressBarModule,

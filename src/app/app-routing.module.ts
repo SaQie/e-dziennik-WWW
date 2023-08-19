@@ -12,6 +12,7 @@ import { SchoolClassManagementComponent } from './modules/admin/admin/school-cla
 import { SchoolClassManagementTableComponent } from './modules/admin/admin/school-class/school-class-management/table/school-class-management-table/school-class-management-table.component';
 import { ChatComponent } from './modules/chat/chat/chat.component';
 import { ChattingComponent } from './modules/chat/chatting/chatting.component';
+import { ScriptComponent } from './modules/script/script.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   },
   {
     path: 'chat', component: ChatComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'script', component: ScriptComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -68,17 +68,14 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (element.scrollTop === 0 && !this.isLoadingMessages && this.pagesCount >= this.currentPage) {
       this.isLoadingMessages = true;
       this.currentPage++;
-      setTimeout(() => {
-        this.chatService.loadMoreMessages(this.chatId, this.currentPage, this.pageSize).subscribe({
-          next: (chatMessages: Page<ChatMessage[]>) => {
-            const newMessages = chatMessages.content.concat(this.chatMessages);
-            this.chatMessages = newMessages;
-            this.isLoadingMessages = false;
-            this.detectRef.detectChanges();
-          }
-        });
-
-      }, 1000);
+      this.chatService.loadMoreMessages(this.chatId, this.currentPage, this.pageSize).subscribe({
+        next: (chatMessages: Page<ChatMessage[]>) => {
+          const newMessages = chatMessages.content.concat(this.chatMessages);
+          this.chatMessages = newMessages;
+          this.isLoadingMessages = false;
+          this.detectRef.detectChanges();
+        }
+      });
     }
   };
 
